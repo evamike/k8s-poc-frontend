@@ -1,6 +1,62 @@
-# Getting Started with Create React App
+# k8s-poc-frontend
+
+POC project for React frontend application with Kubernetes deployment configuration.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Run the application locally
+
+* run the `npm start` script  
+* You can now view k8s-poc-frontend in the browser.
+
+```
+ http://localhost:3000
+```
+
+## Run locally on Kubernetes
+
+* **Replace YOUR_DOCKERHUB_USERNAME with your Docker Hub username** in
+    * k8s/k8s-poc-frontend.yaml
+    * in the below commands 
+
+### Push to Docker hub
+
+* login to Docker Hub for the push
+
+```
+docker login -u YOUR_DOCKERHUB_USERNAME
+```
+
+* build
+    * --tag , -t: Name and optionally a tag in the 'name:tag' format
+
+```
+docker build -t YOUR_DOCKERHUB_USERNAME/k8s-poc-frontend .
+```
+
+* push to docker
+
+```
+docker push YOUR_DOCKERHUB_USERNAME/k8s-poc-frontend
+```
+
+### Deploy to local kubernetes
+
+* Prerequisite: The [poc backend ](https://github.com/evamike/k8s-poc-backend) is deployed to kubernetes as explained [here](https://github.com/evamike/k8s-poc-backend).
+
+* apply deployment
+
+```
+kubectl apply -f k8s/k8s-poc-frontend.yaml
+```
+
+* You can now view k8s-poc-frontend running on kubernetes in the browser.
+
+```
+ http://localhost:3000
+```
 
 ## Available Scripts
 
